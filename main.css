@@ -1,12 +1,23 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Do Hyeon', sans-serif;
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+  overflow: hidden;
 }
 #warpAll {
   padding-top: 10vh;
   width: 100vw;
   height: 90vh;
   background-color: black;
+}
+#score {
+  position: absolute;
+  left: 47vw;
+  margin: 0 auto;
+  font-size: 2.5em;
+  color: white;
 }
 #game {
   width: 100vw;
@@ -19,4 +30,10 @@
   width: 2vw;
   height: 2vw;
   background-color: #3798cc;
+}
+.emeny {
+  position: absolute;
+  width: 2vw;
+  height: 2vw;
+  background-color: #db3d3d;
 }
