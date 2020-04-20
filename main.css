@@ -30,10 +30,12 @@
   width: 2vw;
   height: 2vw;
   background-color: #3798cc;
+  box-shadow: 8px 8px 0 #121212;
 }
 .emeny {
   position: absolute;
   width: 2vw;
   height: 2vw;
   background-color: #db3d3d;
+  box-shadow: 6px 6px 0 #828282;
 }
