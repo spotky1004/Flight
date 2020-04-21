@@ -1,11 +1,21 @@
 $(function (){
+  varData = ['highScore', 'highStage', 'attempt'];
+  resetData = {
+    0: 0,
+    1: 0,
+    2: 0
+  };
   airHeight = 50;
   airAcc = 0;
   score = 1;
   diff = 0;
   gameTick = 0;
+  gameEndTick = 5;
+  highScore = 0;
+  highStage = 0;
+  attempt = 0;
   isPressed = false;
-  gameEnd = false;
+  gameEnd = true;
   airplanePrefix = document.querySelector('#airplane');
   emenyPrefix = document.querySelector('.emeny');
   emenyNum = [];
@@ -14,35 +24,84 @@ $(function (){
   emenyType = [];
   emenyNr = 1;
 
+  function gameSave() {
+    var date = new Date();
+    date.setDate(date.getDate() + 2000);
+    var willCookie = "";
+    willCookie += "saveData=";
+    saveFile = {};
+    for (var i = 0; i < varData.length; i++) {
+      saveFile[i] = eval(varData[i]);
+    }
+    willCookie += JSON.stringify(saveFile);
+    willCookie += ";expires=" + date.toUTCString();
+    document.cookie = willCookie;
+  }
+  function gameLoad() {
+    var cookies = document.cookie.split(";");
+    for(var i in cookies) {
+      if(cookies[i].search('saveData') != -1) {
+        const savedFile = JSON.parse(decodeURIComponent(cookies[i].replace('saveData' + "=", "")));
+        dataCopy = JSON.parse(JSON.stringify(resetData));
+        Object.assign(dataCopy, savedFile);
+        for (var i = 0; i < varData.length; i++) {
+          this[varData[i]] = dataCopy[i];
+        }
+        debugStr = dataCopy;
+      }
+    }
+  }
+  function newGame() {
+    airHeight = 50;
+    airAcc = 0;
+    score = 1;
+    diff = 0;
+    gameTick = 0;
+    emenyNum = [];
+    emenyX = [];
+    emenyY = [];
+    emenyType = [];
+    emenyNr = 1;
+    attempt++;
+    gameEnd = false;
+    $('#score').show();
+    $('#name').hide();
+    $('#hight').hide();
+    gameSave();
+  }
+
   document.querySelector('#warpAll').addEventListener('mouseup', function(event) {
     isPressed = false;
   });
   document.querySelector('#warpAll').addEventListener('mousedown', function(event) {
     isPressed = true;
+    if (gameEnd == true && gameEndTick >= 5) {
+      newGame();
+    }
   });
   setInterval( function () {
+    if (isPressed) {
+      airAcc += 0.05;
+      if (airAcc >= 1.5) {
+        airAcc = 1.5;
+      }
+    } else {
+      airAcc -= 0.05;
+      if (airAcc <= -1.5) {
+        airAcc = -1.5;
+      }
+    }
+    airHeight -= Math.sin(airAcc)*2;
+    if (0 > airHeight) {
+      airHeight = 0;
+      airAcc = 0;
+    } else if (95 < airHeight) {
+      airHeight = 95;
+      airAcc = 0;
+    }
+    $('#airplane').css('top', (airHeight*0.8+10) + 'vh');
     if (gameEnd != true) {
-      if (isPressed) {
-        airAcc += 0.05;
-        if (airAcc >= 1.5) {
-          airAcc = 1.5;
-        }
-      } else {
-        airAcc -= 0.05;
-        if (airAcc <= -1.5) {
-          airAcc = -1.5;
-        }
-      }
-      airHeight -= Math.sin(airAcc)*2;
-      if (0 > airHeight) {
-        airHeight = 0;
-        airAcc = 0;
-      } else if (95 < airHeight) {
-        airHeight = 95;
-        airAcc = 0;
-      }
       diff += 0.001*(Math.log10(score)**1.5);
-      $('#airplane').css('top', (airHeight*0.8+10) + 'vh');
       score += Math.abs(Math.floor((Math.random()*8+4)*(airAcc**2)*(diff+1)));
       $('#score').html(function (index,html) {
         scoreDim = Math.floor((Math.sqrt(diff) - Math.floor(Math.sqrt(diff)))*100);
@@ -98,7 +157,7 @@ $(function (){
             break;
           case 2:
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
-            emenyY[i] += Math.sin(emenyNum[i]/4+gameTick*0.05)/1.3;
+            emenyY[i] += Math.sin(emenyNum[i]/4+gameTick*0.05)/1.5;
             break;
           case 3:
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
@@ -136,7 +195,27 @@ $(function (){
         $('.e' + emenyNum[i]).css('left', (208-emenyX[i]) + 'vh');
         $('.e' + emenyNum[i]).css('top', emenyY[i] + 'vh');
         if ((198 < emenyX[i] && emenyX[i] < 200) && emenyY[i]-2 < (airHeight*0.8+10) && (airHeight*0.8+10) < emenyY[i]+2) {
+          if (highStage < Math.floor(Math.sqrt(diff))) {
+            highStage = Math.floor(Math.sqrt(diff));
+          }
+          if (highScore < score) {
+            highScore = score;
+          }
           gameEnd = true;
+          $('.emeny').remove();
+          $('.emenyG').remove();
+          $('.emenyB').remove();
+          $('.emenyP').remove();
+          $('.emenyM').remove();
+          $('.emenyW').remove();
+          $('#score').hide();
+          $('#name').show();
+          $('#hight').show();
+          $('#hight').html(function (index,html) {
+            return 'High Score: ' + highScore + '<br>High Stage: lv ' + highStage;
+          });
+          gameEndTick = 0;
+          gameSave();
         }
         if (emenyX[i] > 250) {
           $('.e' + emenyNum[i]).remove();
@@ -148,5 +227,13 @@ $(function (){
       }
       gameTick++;
     }
+    gameEndTick += 0.2
   }, 20);
+
+  $('#score').hide();
+  gameLoad();
+  $('#hight').html(function (index,html) {
+    return 'High Score: ' + highScore + '<br>High Stage: lv ' + highStage;
+  });
+
 });
