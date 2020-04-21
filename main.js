@@ -2,7 +2,7 @@ $(function (){
   airHeight = 50;
   airAcc = 0;
   score = 1;
-  diff = 0;
+  diff = 9;
   gameTick = 0;
   isPressed = false;
   gameEnd = false;
@@ -92,7 +92,7 @@ $(function (){
             break;
           case 2:
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
-            emenyY[i] += Math.sin(emenyNum[i]/4+gameTick*0.05/3);
+            emenyY[i] += Math.sin(emenyNum[i]/4+gameTick*0.05)/1.3;
             break;
           case 3:
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
