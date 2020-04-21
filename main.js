@@ -60,7 +60,7 @@ $(function (){
     emenyX = [];
     emenyY = [];
     emenyType = [];
-    emenyNr = ((stageSel/3)*100)+1;
+    emenyNr = Math.floor((stageSel/3)*100)+1;
     attempt++;
     gameEnd = false;
     $('#score').show();
