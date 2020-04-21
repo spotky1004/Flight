@@ -101,9 +101,9 @@ $(function (){
           case 4:
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
             if (emenyY[i] < (airHeight*0.8+10)) {
-              emenyY[i] += (emenyNum[i]%4)/10+0.2;
+              emenyY[i] += ((emenyNum[i]%4)/10+0.2)/2;
             } else {
-              emenyY[i] -= (emenyNum[i]%4)/10+0.2;
+              emenyY[i] -= ((emenyNum[i]%4)/10+0.2)/2;
             }
             break;
           case 5:
