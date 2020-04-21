@@ -54,7 +54,7 @@ $(function (){
         emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
         $('.e' + emenyNum[i]).css('left', (208-emenyX[i]) + 'vh');
         $('.e' + emenyNum[i]).css('top', Math.abs(((emenyNum[i]**1.4)%152)-76)+10 + 'vh');
-        if ((198 < emenyX[i] && emenyX[i] < 204) && Math.abs(((emenyNum[i]**1.4)%152)-76)+8 < (airHeight*0.8+10) && (airHeight*0.8+10) < Math.abs(((emenyNum[i]**1.4)%152)-76)+12) {
+        if ((198 < emenyX[i] && emenyX[i] < 200) && Math.abs(((emenyNum[i]**1.4)%152)-76)+8 < (airHeight*0.8+10) && (airHeight*0.8+10) < Math.abs(((emenyNum[i]**1.4)%152)-76)+12) {
           gameEnd = true;
         }
         if (emenyX[i] > 250) {
