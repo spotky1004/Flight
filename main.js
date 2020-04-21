@@ -41,7 +41,7 @@ $(function (){
         airHeight = 95;
         airAcc = 0;
       }
-      diff += 0.001*Math.log10(score);
+      diff += 0.001*(Math.log10(score)**1.5);
       $('#airplane').css('top', (airHeight*0.8+10) + 'vh');
       score += Math.abs(Math.floor((Math.random()*8+4)*(airAcc**2)*(diff+1)));
       $('#score').html(function (index,html) {
@@ -81,7 +81,7 @@ $(function (){
             break;
           case 2:
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
-            emenyY[i] += Math.sin(emenyNum[i]/4+gameTick*0.05);
+            emenyY[i] += Math.sin(emenyNum[i]/4+gameTick*0.05/2);
             break;
           case 3:
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7)*Math.sin(gameTick/3)*2*Math.random();
