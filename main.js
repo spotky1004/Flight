@@ -294,7 +294,7 @@ $(function (){
           $('#name').show();
           $('#hight').show();
           $('#hight').html(function (index,html) {
-            return 'High Score: ' + highScore + '<br>High Stage: lv ' + highStage;
+            return 'Attempt: ' + attempt + '<br>High Score: ' + highScore + '<br>High Stage: lv ' + highStage;
           });
           $('#stageFrom').show();
           gameEndTick = 0;
@@ -316,7 +316,7 @@ $(function (){
   $('#score').hide();
   gameLoad();
   $('#hight').html(function (index,html) {
-    return 'High Score: ' + highScore + '<br>High Stage: lv ' + highStage;
+    return 'Attempt: ' + attempt + '<br>High Score: ' + highScore + '<br>High Stage: lv ' + highStage;
   });
 
 });
