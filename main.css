@@ -39,3 +39,17 @@
   background-color: #db3d3d;
   box-shadow: 6px 6px 0 #828282;
 }
+.emenyG {
+  position: absolute;
+  width: 1vw;
+  height: 1vw;
+  background-color: #44cfa7;
+  box-shadow: 6px 6px 0 #828282;
+}
+.emenyB {
+  position: absolute;
+  width: 1vw;
+  height: 1vw;
+  background-color: #3262a8;
+  box-shadow: 6px 6px 0 #828282;
+}
