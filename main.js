@@ -67,6 +67,11 @@ $(function (){
             emenyY.push(Number(Math.abs(((emenyNum[emenyNum.length-1]**1.4)%152)-76)+10));
             $('<div class=emenyB>').addClass('e' + Number(emenyNr)).appendTo('#game');
             break;
+          case 4:
+            emenyX.push(Number(0));
+            emenyY.push(Number(Math.abs(((emenyNum[emenyNum.length-1]**1.4)%152)-76)+10));
+            $('<div class=emenyP>').addClass('e' + Number(emenyNr)).appendTo('#game');
+            break;
           default:
             emenyX.push(Number(0));
             emenyY.push(Number(Math.abs(((emenyNum[emenyNum.length-1]**1.4)%152)-76)+10));
@@ -84,7 +89,17 @@ $(function (){
             emenyY[i] += Math.sin(emenyNum[i]/4+gameTick*0.05/3);
             break;
           case 3:
+            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7)*Math.sin(gameTick/3)*2*Math.random();
+            break;
+          case 4:
+            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
+            if (emenyY[i] < (airHeight*0.8+10)) {
+              emenyY[i] += (emenyNum[i]%4)/10+0.2;
+            } else {
+              emenyY[i] -= (emenyNum[i]%4)/10+0.2;
+            }
+            break;
           default:
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
         }

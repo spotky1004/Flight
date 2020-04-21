@@ -53,3 +53,10 @@
   background-color: #3262a8;
   box-shadow: 6px 6px 0 #828282;
 }
+.emenyP {
+  position: absolute;
+  width: 1vw;
+  height: 1vw;
+  background-color: #a134eb;
+  box-shadow: 6px 6px 0 #828282;
+}
