@@ -12,7 +12,7 @@ $(function (){
   gameTick = 0;
   gameEndTick = 5;
   highScore = 0;
-  highStage = 100;
+  highStage = 0;
   attempt = 0;
   stageSel = 0;
   isPressed = false;
