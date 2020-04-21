@@ -14,6 +14,7 @@ $(function (){
   highScore = 0;
   highStage = 0;
   attempt = 0;
+  stageSel = 0;
   isPressed = false;
   gameEnd = true;
   airplanePrefix = document.querySelector('#airplane');
@@ -55,7 +56,7 @@ $(function (){
     airHeight = 50;
     airAcc = 0;
     score = 1;
-    diff = 0;
+    diff = stageSel**2;
     gameTick = 0;
     emenyNum = [];
     emenyX = [];
@@ -67,9 +68,28 @@ $(function (){
     $('#score').show();
     $('#name').hide();
     $('#hight').hide();
+    $('#stageFrom').hide();
     gameSave();
   }
 
+  $(document).keydown(function(event) {
+    if (event.keyCode == '39') {
+      if (highStage >= stageSel+3) {
+        stageSel += 3;
+        $('#stageFrom').html(function (index,html) {
+          return 'Start From Stage ' + stageSel + ' (press arrow key <- ->)';
+        });
+      }
+    }
+    else if (event.keyCode == '37') {
+      if (3 <= stageSel) {
+        stageSel -= 3;
+        $('#stageFrom').html(function (index,html) {
+          return 'Start From Stage ' + stageSel + ' (press arrow key <- ->)';
+        });
+      }
+    }
+  });
   document.querySelector('#warpAll').addEventListener('mouseup', function(event) {
     isPressed = false;
   });
@@ -214,6 +234,7 @@ $(function (){
           $('#hight').html(function (index,html) {
             return 'High Score: ' + highScore + '<br>High Stage: lv ' + highStage;
           });
+          $('#stageFrom').show();
           gameEndTick = 0;
           gameSave();
         }
