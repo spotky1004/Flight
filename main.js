@@ -45,7 +45,8 @@ $(function (){
       $('#airplane').css('top', (airHeight*0.8+10) + 'vh');
       score += Math.abs(Math.floor((Math.random()*8+4)*(airAcc**2)*(diff+1)));
       $('#score').html(function (index,html) {
-          return 'Score: ' + score + ' (Lv ' + Math.floor(Math.sqrt(diff)) + ')';
+        scoreDim = Math.floor((Math.sqrt(diff) - Math.floor(Math.sqrt(diff)))*100);
+        return 'Score: ' + score + ' (Lv ' + Math.floor(Math.sqrt(diff)) + ' <sub>' + scoreDim + '%</sub>' + ')';
       });
       if (Math.random() < Math.sqrt(diff)/100) {
         emenyNum.push(Number(emenyNr));
