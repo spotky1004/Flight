@@ -2,7 +2,7 @@ $(function (){
   airHeight = 50;
   airAcc = 0;
   score = 1;
-  diff = 0;
+  diff = 9;
   gameTick = 0;
   isPressed = false;
   gameEnd = false;
@@ -115,10 +115,14 @@ $(function (){
           default:
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
         }
-        if (emenyY[i] < 10) {
+        if (emenyY[i] < 10 && emenyType[i] != 2) {
           emenyY[i] = 10;
-        } else if (emenyY[i] > 88) {
+        } else if (emenyY[i] > 88 && emenyType[i] != 2) {
           emenyY[i] = 88;
+        } else if (emenyY[i] < 5 && emenyType[i] == 2){
+          emenyY[i] = 5;
+        } else if (emenyY[i] > 95 && emenyType[i] == 2) {
+          emenyY[i] = 95;
         }
         $('.e' + emenyNum[i]).css('left', (208-emenyX[i]) + 'vh');
         $('.e' + emenyNum[i]).css('top', emenyY[i] + 'vh');
