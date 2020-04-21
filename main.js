@@ -46,7 +46,8 @@ $(function (){
       score += Math.abs(Math.floor((Math.random()*8+4)*(airAcc**2)*(diff+1)));
       $('#score').html(function (index,html) {
         scoreDim = Math.floor((Math.sqrt(diff) - Math.floor(Math.sqrt(diff)))*100);
-        return 'Score: ' + score + ' (Lv ' + Math.floor(Math.sqrt(diff)) + ' <sub>' + scoreDim + '%</sub>' + ')';
+        level = Math.floor((Math.floor(Math.floor(Math.floor(Math.sqrt(diff)/3)))+1)/3+1);
+        return 'Score: ' + score + ' (<span class="level' + level + '">Lv ' + Math.floor(Math.sqrt(diff)) + ' <sub>' + scoreDim + '%</sub>' + '</span>)';
       });
       if (Math.random() < Math.sqrt(diff)/100) {
         emenyNum.push(Number(emenyNr));
@@ -77,6 +78,11 @@ $(function (){
             emenyX.push(Number(0));
             emenyY.push(Number(Math.abs(((emenyNum[emenyNum.length-1]**1.4)%152)-76)+10));
             $('<div class=emenyM>').addClass('e' + Number(emenyNr)).appendTo('#game');
+            break;
+          case 6:
+            emenyX.push(Number(75));
+            emenyY.push(Number(Math.abs(((emenyNum[emenyNum.length-1]**1.4)%152)-76)+10));
+            $('<div class=emenyW>').addClass('e' + Number(emenyNr)).appendTo('#game');
             break;
           default:
             emenyX.push(Number(0));
@@ -111,6 +117,9 @@ $(function (){
             if (emenyX[i] > 100) {
               $('.e' + emenyNum[i]).addClass('opac');
             }
+            break;
+          case 6:
+            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
             break;
           default:
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
