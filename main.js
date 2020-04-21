@@ -205,7 +205,7 @@ $(function (){
             break;
           case 2:
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
-            emenyY[i] += Math.sin(emenyNum[i]/4+gameTick*0.05)/1.5;
+            emenyY[i] += Math.sin(emenyNum[i]/4+gameTick*0.07)/1.8;
             break;
           case 3:
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
