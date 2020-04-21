@@ -60,7 +60,24 @@
   color: #e03a3a;
 }
 .level4 {
-  color: #000;
+  background: linear-gradient(45deg, #79d498, #913f3f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.level5 {
+  background: linear-gradient(45deg, #b89549, #572323);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.level6 {
+  background: linear-gradient(45deg, #a8473d, #401713);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.level7 {
+  background: linear-gradient(45deg, #919191, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 #game {
   width: 100vw;
@@ -118,5 +135,47 @@
   width: 1vw;
   height: 1vw;
   background-color: #000;
+  box-shadow: 6px 6px 0 #828282;
+}
+.Uemeny {
+  position: absolute;
+  width: 1vw;
+  height: 1vw;
+  background-color: #872222;
+  box-shadow: 6px 6px 0 #828282;
+}
+.UemenyG {
+  position: absolute;
+  width: 1vw;
+  height: 1vw;
+  background-color: #2b876d;
+  box-shadow: 6px 6px 0 #828282;
+}
+.UemenyB {
+  position: absolute;
+  width: 1vw;
+  height: 1vw;
+  background-color: #3262a8;
+  box-shadow: 6px 6px 0 #828282;
+}
+.UemenyP {
+  position: absolute;
+  width: 1vw;
+  height: 1vw;
+  background-color: #102545;
+  box-shadow: 6px 6px 0 #828282;
+}
+.UemenyM {
+  position: absolute;
+  width: 1vw;
+  height: 1vw;
+  background-color: #8fa5bd;
+  box-shadow: 6px 6px 0 #828282, 0 0 10px #8fa5bd;
+}
+.UemenyW {
+  position: absolute;
+  width: 1vw;
+  height: 1vw;
+  background-color: #3b3b3b;
   box-shadow: 6px 6px 0 #828282;
 }
