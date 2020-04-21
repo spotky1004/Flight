@@ -2,7 +2,7 @@ $(function (){
   airHeight = 50;
   airAcc = 0;
   score = 1;
-  diff = 9;
+  diff = 0;
   gameTick = 0;
   isPressed = false;
   gameEnd = false;
