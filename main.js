@@ -201,18 +201,18 @@ $(function (){
       for (var i = 0; i < emenyNum.length; i++) {
         switch (emenyType[i]) {
           case 1:
-            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
+            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/5)+0.7);
             break;
           case 2:
-            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
-            emenyY[i] += Math.sin(emenyNum[i]/4+gameTick*0.07)/1.8;
+            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/5)+0.7);
+            emenyY[i] += Math.sin(emenyNum[i]/4+gameTick*0.03)/2;
             break;
           case 3:
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7)*Math.sin(gameTick/3)*2*Math.random();
             break;
           case 4:
-            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
+            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/5)+0.7);
             if (emenyY[i] < (airHeight*0.8+10)) {
               emenyY[i] += ((emenyNum[i]%4)/10+0.2)/2;
             } else {
@@ -220,13 +220,13 @@ $(function (){
             }
             break;
           case 5:
-            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
+            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/5)+0.7);
             if (emenyX[i] > 100) {
               $('.e' + emenyNum[i]).addClass('opac');
             }
             break;
           case 6:
-            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
+            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/5)+0.7);
             break;
           case 7:
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7)*1.5;
