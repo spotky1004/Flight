@@ -72,16 +72,16 @@ $(function (){
 
   $(document).keydown(function(event) {
     if (event.keyCode == '39') {
-      if (highStage >= stageSel+3) {
-        stageSel += 3;
+      if (highStage >= stageSel+1) {
+        stageSel++;
         $('#stageFrom').html(function (index,html) {
           return 'Start From Stage ' + stageSel + ' (press arrow key <- ->)';
         });
       }
     }
     else if (event.keyCode == '37') {
-      if (3 <= stageSel) {
-        stageSel -= 3;
+      if (1 <= stageSel) {
+        stageSel--;
         $('#stageFrom').html(function (index,html) {
           return 'Start From Stage ' + stageSel + ' (press arrow key <- ->)';
         });
