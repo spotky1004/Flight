@@ -73,6 +73,11 @@ $(function (){
             emenyY.push(Number(Math.abs(((emenyNum[emenyNum.length-1]**1.4)%152)-76)+10));
             $('<div class=emenyP>').addClass('e' + Number(emenyNr)).appendTo('#game');
             break;
+          case 5:
+            emenyX.push(Number(0));
+            emenyY.push(Number(Math.abs(((emenyNum[emenyNum.length-1]**1.4)%152)-76)+10));
+            $('<div class=emenyM>').addClass('e' + Number(emenyNr)).appendTo('#game');
+            break;
           default:
             emenyX.push(Number(0));
             emenyY.push(Number(Math.abs(((emenyNum[emenyNum.length-1]**1.4)%152)-76)+10));
@@ -99,6 +104,12 @@ $(function (){
               emenyY[i] += (emenyNum[i]%4)/10+0.2;
             } else {
               emenyY[i] -= (emenyNum[i]%4)/10+0.2;
+            }
+            break;
+          case 5:
+            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
+            if (emenyX[i] > 100) {
+              $('.e' + emenyNum[i]).addClass('opac');
             }
             break;
           default:

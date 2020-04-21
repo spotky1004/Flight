@@ -60,3 +60,13 @@
   background-color: #a134eb;
   box-shadow: 6px 6px 0 #828282;
 }
+.emenyM {
+  position: absolute;
+  width: 1vw;
+  height: 1vw;
+  background-color: #bfd9f5;
+  box-shadow: 6px 6px 0 #828282, 0 0 10px #bfd9f5;
+}
+.opac {
+  opacity: 0;
+}
