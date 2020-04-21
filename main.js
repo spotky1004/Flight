@@ -53,10 +53,9 @@ $(function (){
       for (var i = 0; i < emenyNum.length; i++) {
         emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
         $('.e' + emenyNum[i]).css('left', (208-emenyX[i]) + 'vh');
-        $('.e' + emenyNum[i]).css('top', ((emenyNum[i]**1.4)%76)+10 + 'vh');
-        if ((198 < emenyX[i] && emenyX[i] < 204) && (((emenyNum[i]**1.4)%76)+8 < (airHeight*0.8+10) && (airHeight*0.8+10) < ((emenyNum[i]**1.4)%76)+12)) {
+        $('.e' + emenyNum[i]).css('top', Math.abs(((emenyNum[i]**1.4)%152)-76)+10 + 'vh');
+        if ((198 < emenyX[i] && emenyX[i] < 204) && Math.abs(((emenyNum[i]**1.4)%152)-76)+8 < (airHeight*0.8+10) && (airHeight*0.8+10) < Math.abs(((emenyNum[i]**1.4)%152)-76)+12) {
           gameEnd = true;
-          console.log('x');
         }
         if (emenyX[i] > 250) {
           $('.e' + emenyNum[i]).remove();
