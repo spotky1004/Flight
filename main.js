@@ -53,8 +53,6 @@ $(function (){
     }
   }
   function newGame() {
-    airHeight = 50;
-    airAcc = 0;
     score = 1;
     diff = stageSel**2;
     gameTick = 0;
