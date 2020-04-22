@@ -128,7 +128,7 @@
   box-shadow: 6px 6px 0 #828282, 0 0 10px #bfd9f5;
 }
 .opac {
-  opacity: 0;
+  opacity: 0.2;
 }
 .emenyW {
   position: absolute;
