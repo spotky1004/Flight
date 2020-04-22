@@ -208,7 +208,7 @@ $(function (){
             emenyY[i] += Math.sin(emenyNum[i]/4+gameTick*0.03)/2;
             break;
           case 3:
-            emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7);
+          emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/5)+0.7)/2;
             emenyX[i] += (Math.abs(Math.sin(emenyNum[i]/4))*Math.pow(diff+1, 1/4)+0.7)*Math.sin(gameTick/3)*2*Math.random();
             break;
           case 4:
