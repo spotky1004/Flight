@@ -16,6 +16,7 @@ $(function (){
   attempt = 0;
   stageSel = 0;
   isPressed = false;
+  isPressedS = false;
   gameEnd = true;
   airplanePrefix = document.querySelector('#airplane');
   emenyPrefix = document.querySelector('.emeny');
@@ -87,6 +88,17 @@ $(function (){
         });
       }
     }
+    else if (event.keyCode == '32') {
+      isPressedS = true;
+      if (gameEnd == true && gameEndTick >= 5) {
+        newGame();
+      }
+    }
+  });
+  $(document).keyup(function(event) {
+    if (event.keyCode == '32') {
+      isPressedS = false;
+    }
   });
   document.querySelector('#warpAll').addEventListener('mouseup', function(event) {
     isPressed = false;
@@ -98,7 +110,7 @@ $(function (){
     }
   });
   setInterval( function () {
-    if (isPressed) {
+    if (isPressed || isPressedS) {
       airAcc += 0.05;
       if (airAcc >= 1.5) {
         airAcc = 1.5;
